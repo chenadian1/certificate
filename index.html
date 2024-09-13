@@ -1,0 +1,214 @@
+<script src="/zjjyh/basejs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+
+<style>
+	/*证书查看按钮样式*/
+	.btn {
+		margin-top: 5px;
+		margin-left: 2px;
+		font-family: '微软雅黑';
+		/* background:url(img/按钮.png)  ;   */
+		border: 0px;
+		border-radius: 12px;
+		width: 135px;
+		height: 49px;
+		cursor: pointer;
+		font-size: 25px;
+		color: #477172;
+		background: #79d4c870;
+		font-weight: 550;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/*证书查看按钮样式*/
+	.table {
+
+		font-size: 25px;
+		color: #696262;
+		font-weight: 650;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.table1 {
+
+		font-size: 28px;
+		color: #696262;
+		font-weight: 650;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.a {
+
+		font-size: 30px;
+		color: #696262;
+		font-weight: 550;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	#target {
+		width: 97%;
+		display: none;
+	}
+
+	#targetImg {
+		display: none;
+		width: 97%;
+		margin: 0 auto;
+
+	}
+
+	#targetImg.active {
+		display: block;
+		width: 97%;
+	}
+
+
+	#phonetext {
+		display: none;
+	}
+
+	#phonetext.active {
+		display: block;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function () {
+
+		var ids = document.getElementById("id").value;
+		var id = "query" + "," + ids;
+		document.getElementById("aac003").innerHTML = "孙宝斋";
+		document.getElementById("bgej47").innerHTML = "2023";
+		document.getElementById("bgej31").innerHTML = "2023"
+		document.getElementById("bgej33").innerHTML = "GD130220794460";
+		document.getElementById("bgej55").innerHTML = "口腔及眼耳鼻专业";
+		document.getElementById("bgej45").innerHTML = "30";
+		document.getElementById("bgej46").innerHTML = "200";
+		document.getElementById("bgej47").innerHTML = "27";
+		document.getElementById("jieguo").innerHTML = '已完成该年度继续教育任务';
+
+		document.getElementById("submitBtn").onclick = function () {
+			document.getElementById('targetImg').classList.toggle('active')
+			document.getElementById('phonetext').classList.toggle('active')
+		}
+	}
+
+
+
+	/*点击查询按钮触发的事件*/
+	function check() {
+		var id = document.getElementById("id").value;
+		var g_contextpath = '/zjjyh/ShowImgServlet?id=';
+		//window.location=g_contextpath+"print"+","+id;
+		var target = document.getElementById("target").src = g_contextpath + "print" + "," + id;
+		xuanzhun();
+	}
+
+	//如果图片不存在测返回文字
+	function nofind() {
+		document.getElementById('phonetext').innerHTML = "数据不存在，请登录到系统，重新生成证书并打印";
+		document.getElementById('target').style.display = "none";
+	}
+	function preview(path) {
+		alert(path);
+		document.getElementById("target").src = path;
+	}
+	function trim(str) { //删除左右两端的空格
+		return str.replace(/(^\s*)|(\s*$)/g, "");
+	}
+
+	/*图片样式*/
+	function xuanzhun() {
+
+		var current = 360 % 360;
+		document.getElementById('phonetext').style.display = "";
+		document.getElementById('target').style.display = "";
+		var imgdiv = document.getElementById('imgdiv');
+		imgdiv.style.transform = 'rotate(' + current + 'deg)';
+	}
+
+</script>
+<style type="text/css">
+	@media print {
+		img {
+			height: 100%
+		}
+	}
+</style>
+<html>
+<html>
+
+<body>
+	<div>
+
+		<center>
+			<input id="id" hidden="true" value="0E37A3D8A5D3072EE063BFC880090E74" />
+			<table
+				style="width: 100%;font-size: 25px;color: #696262;font-weight:650;-webkit-font-smoothing:antialiased;"
+				border="0">
+				<!--    <col width="1%">
+		        <col width="6%">
+		        <col width="9%">
+		        <col width="10%">
+		        <col width="2%">
+		        <col width="5%">
+		        <col width="5%">  -->
+				<col width="13%">
+
+
+
+				<tr>
+					<td align="right">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</td>
+					<td id="aac003">null</td>
+				</tr>
+				<tr>
+					<td align="right">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;度:</td>
+					<td id="bgej31">null</td>
+				</tr>
+				<tr>
+					<td align="right">证书编号:</td>
+					<td id="bgej33">null</td>
+				</tr>
+				<tr>
+					<td align="right">专业系列:</td>
+					<td id="bgej55">null</td>
+				</tr>
+
+			</table>
+			<table
+				style="width: 100%;font-size: 25px;color: #696262;font-weight:650;-webkit-font-smoothing:antialiased;"
+				border="0">
+				<col width="13%">
+				<tr>
+					<td align="right">学习情况:</td>
+					<td>已完成公需课<font color="red" id="bgej45">null</font>学时、</td>
+					<td>已完成专业课<font color="red" id="bgej46">null</font>学时、</td>
+					<td>已完成选修课<font color="red" id="bgej47">null</font>学时、</td>
+				</tr>
+			</table>
+			<table
+				style="width: 100%;font-size: 25px;color: #696262;font-weight:650;-webkit-font-smoothing:antialiased;"
+				border="0">
+				<col width="13%">
+				<tr>
+					<td align="right">验证结果:</td>
+					<td id="jieguo"></td>
+					<td id="id"> </td>
+				</tr>
+
+			</table>
+
+			<table style="width: 100%" border="0">
+				<tr>
+					<td align="left"><input class="btn" type="submit" value="证书查看" id="submitBtn" /></td>
+				</tr>
+			</table>
+		</center>
+	</div>
+	<div id="imgdiv" style="margin-top: 10px;">
+		<!-- <center><img alt='证书' id="targetImg" src="./img.jpg" /></center> -->
+		<img src="./img.jpg" alt="" id="targetImg">
+		<center><a class="a" id="phonetext">您所查询的证书在广东省专业技术人员继续教育管理系统为真实有效。</a></center>
+	</div>
+</body>
+
+</html>
